@@ -1,0 +1,15 @@
+services:
+  todo-app:
+    container_name: todo-app-dev
+    build:
+      context: .
+      target: base
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app # Sinkronisasi kode lokal
+      - /usr/src/app/node_modules
+    command: npm run dev
+    environment:
+      - NODE_ENV=development
+    restart: always
